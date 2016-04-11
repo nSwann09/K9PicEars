@@ -30,3 +30,6 @@
 
 # Debug files
 *.dSYM/
+Ears/build/
+Ears/dist/
+Ears/debug/
