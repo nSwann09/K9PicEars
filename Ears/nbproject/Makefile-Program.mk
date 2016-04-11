@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Main.c 16F1717_STD.c I2C.c SSD1306.c PCA9685.c
+SOURCEFILES_QUOTED_IF_SPACED=Main.c 16F1717_STD.c I2C.c PCA9685.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Main.p1 ${OBJECTDIR}/16F1717_STD.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/SSD1306.p1 ${OBJECTDIR}/PCA9685.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/Main.p1.d ${OBJECTDIR}/16F1717_STD.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/SSD1306.p1.d ${OBJECTDIR}/PCA9685.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Main.p1 ${OBJECTDIR}/16F1717_STD.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/PCA9685.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/Main.p1.d ${OBJECTDIR}/16F1717_STD.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/PCA9685.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Main.p1 ${OBJECTDIR}/16F1717_STD.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/SSD1306.p1 ${OBJECTDIR}/PCA9685.p1
+OBJECTFILES=${OBJECTDIR}/Main.p1 ${OBJECTDIR}/16F1717_STD.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/PCA9685.p1
 
 # Source Files
-SOURCEFILES=Main.c 16F1717_STD.c I2C.c SSD1306.c PCA9685.c
+SOURCEFILES=Main.c 16F1717_STD.c I2C.c PCA9685.c
 
 
 CFLAGS=
@@ -105,14 +105,6 @@ ${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/SSD1306.p1: SSD1306.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SSD1306.p1.d 
-	@${RM} ${OBJECTDIR}/SSD1306.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/SSD1306.p1  SSD1306.c 
-	@-${MV} ${OBJECTDIR}/SSD1306.d ${OBJECTDIR}/SSD1306.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/SSD1306.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/PCA9685.p1: PCA9685.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/PCA9685.p1.d 
@@ -145,14 +137,6 @@ ${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/I2C.p1  I2C.c 
 	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/SSD1306.p1: SSD1306.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/SSD1306.p1.d 
-	@${RM} ${OBJECTDIR}/SSD1306.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=free -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/SSD1306.p1  SSD1306.c 
-	@-${MV} ${OBJECTDIR}/SSD1306.d ${OBJECTDIR}/SSD1306.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/SSD1306.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/PCA9685.p1: PCA9685.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 

@@ -35,11 +35,7 @@
  ******************************************************************************/
 //Configuration setup
 #include "16F1717_STD.h"
-#include "SSD1306.h"
-#include "PCA9685.h"
-
-#define LCD 0x7A
-#define LED 0x40
+#include "pca9685.h"
 
 /*******************************************************************************
  * Function: void initMain()
@@ -76,9 +72,9 @@ void initMain() {
     I2C_Pin_Initialize();
     I2C_Init();
     __delay_ms(1000);
-    SSD1306_Init(0x78);
-    SSD1306_Init(0x7A);
-    PCA9685_Init(LED);
+   // SSD1306_Init(0x78);
+   // SSD1306_Init(0x7A);
+    pca9685_init(PCA9685);
 }
 
 /*******************************************************************************
@@ -107,20 +103,22 @@ void main() {
     }
     LATCbits.LATC0 ^= 0;
     int on = 0;
+       
+    pca9685_brightness(PCA9685,22,0);
     
-    
-    PCA9685_Set_Pwm(LED, 0, 4095);
-    
+    long pwm = 0; 
     // Main loop
     while (1) {
         if (on > 0) {
             on = 0;
             // SSD1306_Clr8(1, 15, on); // Print the text on the line 0, column 0, with inverted colors 
             // SSD1306_Clr8(0, 15, on); // Print the text on the line 0, column 0, with inverted colors        
+            
         } else {
             on = 1;
             //SSD1306_Clr8(1, 15, on); // Print the text on the line 0, column 0, with inverted colors  
             //SSD1306_Clr8(0, 15, on); // Print the text on the line 0, column 0, with inverted colors   
+            
         }
 
         //                    SSD1306_Set_Cursor1(0, 0);
@@ -166,7 +164,7 @@ void main() {
         //    }
         //}
 
-        SSD1306_ClrAll(0x7A, on);
+        //SSD1306_ClrAll(0x7A, on);
         //SSD1306_ClrAll(0x78, on);
 //        //SSD1306_Out8(0x7A, 0, 0, "!", on);
 //        SSD1306_OutMine(0x7A, 0, 1, 0, on);
@@ -188,8 +186,35 @@ void main() {
 //                PCA9685_Set_Low(LED,on);
 //            }
         LATCbits.LATC0 = on;
-        __delay_ms(1000);
+         __delay_ms(5); 
+        if(pwm < 4095) 
+        { 
+            pwm+=5; 
+        } 
+        else 
+        { 
+            pwm = 0; 
+        } 
+        pca9685_send(PCA9685,pwm,1);
 
+         __delay_ms(100);
+         pca9685_send(PCA9685,4095,1);
+         pca9685_send(PCA9685,95,0);
+         __delay_ms(100);
+         pca9685_send(PCA9685,3095,1);
+         pca9685_send(PCA9685,1095,0);
+         __delay_ms(100);
+         pca9685_send(PCA9685,2095,1);
+         pca9685_send(PCA9685,2095,0);
+         __delay_ms(100);
+         pca9685_send(PCA9685,1095,1);
+         pca9685_send(PCA9685,3095,0);
+         __delay_ms(100);
+         pca9685_send(PCA9685,95,1);   
+         pca9685_send(PCA9685,4095,0);        
+         __delay_ms(100);
+         pca9685_send(PCA9685,pwm,1);
+         pca9685_send(PCA9685,pwm,0);
         //        Lcd_Clear();
 
     }

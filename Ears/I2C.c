@@ -128,3 +128,20 @@ void I2C_Write8(int address, int RegADDR, int val) {
     while (!Idle); /* Wait while STOP condition established */
 
 }
+
+void i2c_start() {
+    while (!Idle); /* Don't start unless the MSSP module is idle */
+
+    I2C_Start = 1; /* Set START bit */
+    while (I2C_Start); /* Wait until hardware clears the SEN bit */
+}
+
+void i2c_write(char data) {
+    SSPBUF = data;
+    while (!Idle);
+}    
+
+void i2c_stop() {
+    I2C_Stop = 1; /* Set STOP bit */
+    while (!Idle); /* Wait while STOP condition established */
+}

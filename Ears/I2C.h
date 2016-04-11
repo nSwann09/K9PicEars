@@ -71,3 +71,7 @@ void I2C_Pin_Initialize(void);
 void SendI2C(char addr, char data);
 void WaitMSSP(void);
 
+
+void i2c_start();
+void i2c_write(char data);
+void i2c_stop();
